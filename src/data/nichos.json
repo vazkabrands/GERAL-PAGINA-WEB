@@ -1,0 +1,171 @@
+{
+  "nichos": [
+    {
+      "id": "capilar",
+      "titulo": "Cuidado capilar",
+      "boton": "Capilar",
+      "descripcion": "Rutinas y tratamientos para el cuidado del cabello.",
+      "videos": [
+        {
+          "titulo": "Rutina capilar",
+          "marca": "Savital",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/capilar-rutina.jpg",
+          "visible": true
+        },
+        {
+          "titulo": "Beneficios Pantene",
+          "marca": "Pantene",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/capilar-pantene.jpg",
+          "visible": true
+        },
+        {
+          "titulo": "Crioterapia",
+          "marca": "",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/capilar-crioterapia.jpg",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "viajes",
+      "titulo": "Viajes",
+      "boton": "Viajes",
+      "descripcion": "Experiencias, planes y destinos para vivir y contar.",
+      "videos": [
+        {
+          "titulo": "Vuelo en ala delta",
+          "marca": "",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/viajes-ala-delta.jpg",
+          "visible": true
+        },
+        {
+          "titulo": "Tour Coyoacán",
+          "marca": "",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/viajes-coyoacan.jpg",
+          "visible": true
+        },
+        {
+          "titulo": "Glamping Guatapé",
+          "marca": "",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/viajes-glamping-guatape.jpg",
+          "visible": true
+        },
+        {
+          "titulo": "Glamping Santa Elena",
+          "marca": "",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/viajes-glamping-santa-elena.jpg",
+          "visible": true
+        },
+        {
+          "titulo": "Helicóptero",
+          "marca": "",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/viajes-helicoptero.jpg",
+          "visible": true
+        },
+        {
+          "titulo": "Redbus",
+          "marca": "Redbus",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/viajes-redbus.jpg",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "gastronomia",
+      "titulo": "Gastronomía",
+      "boton": "Gastronomía",
+      "descripcion": "Restaurantes y sabores para antojarse.",
+      "videos": [
+        {
+          "titulo": "La mejor pizza",
+          "marca": "",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/gastro-pizza.jpg",
+          "visible": true
+        },
+        {
+          "titulo": "Taquizada",
+          "marca": "",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/gastro-taquizada.jpg",
+          "visible": true
+        },
+        {
+          "titulo": "Medellín Gourmet",
+          "marca": "",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/gastro-medellin-gourmet.jpg",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "belleza",
+      "titulo": "Belleza y cuidado personal",
+      "boton": "Belleza y cuidado",
+      "descripcion": "Skincare, protección y rutinas de cuidado personal.",
+      "videos": [
+        {
+          "titulo": "Protección todo el día",
+          "marca": "",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/belleza-proteccion.jpg",
+          "visible": true
+        },
+        {
+          "titulo": "Acid Mantlé",
+          "marca": "",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/belleza-acid-mantle.jpg",
+          "visible": true
+        },
+        {
+          "titulo": "Contorno de ojos",
+          "marca": "",
+          "plataforma": "instagram",
+          "enlace": "",
+          "archivo_mp4": "",
+          "miniatura": "/img/videos/belleza-contorno-ojos.jpg",
+          "visible": true
+        }
+      ]
+    }
+  ]
+}

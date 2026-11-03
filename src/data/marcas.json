@@ -1,0 +1,68 @@
+{
+  "marcas_titulo": "Marcas que han confiado en mí",
+  "marcas": [
+    {
+      "nombre": "Savital",
+      "logo": "/img/marcas/savital.png"
+    },
+    {
+      "nombre": "Pantene",
+      "logo": "/img/marcas/pantene.png"
+    },
+    {
+      "nombre": "Nivea",
+      "logo": "/img/marcas/nivea.png"
+    },
+    {
+      "nombre": "Pond's",
+      "logo": "/img/marcas/ponds.png"
+    },
+    {
+      "nombre": "Secret",
+      "logo": "/img/marcas/secret.png"
+    },
+    {
+      "nombre": "Redbus",
+      "logo": "/img/marcas/redbus.png"
+    },
+    {
+      "nombre": "Andina",
+      "logo": "/img/marcas/andina.png"
+    },
+    {
+      "nombre": "Conecty",
+      "logo": "/img/marcas/conecty.png"
+    },
+    {
+      "nombre": "Crearte",
+      "logo": "/img/marcas/crearte.png"
+    },
+    {
+      "nombre": "GetYourGuide",
+      "logo": "/img/marcas/getyourguide.png"
+    }
+  ],
+  "testimonios_titulo": "Lo que dicen las marcas",
+  "testimonios": [
+    {
+      "texto": "Apenas logro ver! El video quedó súper.",
+      "autor": "Marca, por WhatsApp",
+      "captura": ""
+    },
+    {
+      "texto": "Ya checamos el video, sí te quedó muy bonito, muchas gracias. Espero que se hayan divertido y que sus vacaciones en México sean inolvidables.",
+      "autor": "Marca, por WhatsApp",
+      "captura": ""
+    },
+    {
+      "texto": "Siiiii me encantó.",
+      "autor": "Cliente, por WhatsApp",
+      "captura": ""
+    },
+    {
+      "texto": "Está bueno, me gustó mucho, muchas gracias.",
+      "autor": "Cliente, por WhatsApp",
+      "captura": ""
+    }
+  ]
+}

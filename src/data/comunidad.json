@@ -1,0 +1,57 @@
+{
+  "activa": true,
+  "seo_titulo": "Comunidad de mujeres en WhatsApp | Geraldinne Zuluaga",
+  "seo_descripcion": "Comunidad de mujeres para apoyarnos, aprender y crecer juntas: emprendedoras, apoyo en posts, planes en Medellín y un canal de campañas UGC.",
+  "titular": "Comunidad de mujeres",
+  "intro": "Un espacio para apoyarnos, aprender y crecer juntas. Hay grupos distintos según tus intereses: únete a los que más te gusten.",
+  "comunidad_enlace": "https://chat.whatsapp.com/Hf6EbUxY1LPGFPOvlc5CJe",
+  "comunidad_boton": "Unirme a la comunidad",
+  "comunidad_nota": "Al unirte a la comunidad ves todos los grupos y recibes todos los avisos. Si entras solo a un grupo, no te llegan.",
+  "comunidad_cifra": "+600",
+  "comunidad_cifra_texto": "personas en la comunidad de WhatsApp",
+  "canal_cifra": "+1.200",
+  "canal_cifra_texto": "personas en el canal de campañas UGC",
+  "grupos_titulo": "Grupos dentro de la comunidad",
+  "grupos": [
+    {
+      "nombre": "Oportunities",
+      "etiqueta": "",
+      "descripcion": "Cursos gratuitos, capacitaciones, herramientas, IA, marketing, creación de contenido y recursos de valor.",
+      "enlace": "https://chat.whatsapp.com/HWxiQOo7YZyKCloOki3b8z",
+      "boton": "Unirme al grupo"
+    },
+    {
+      "nombre": "Apoyo en posts",
+      "etiqueta": "",
+      "descripcion": "Dinámicas para apoyarnos con likes, comentarios y compartidos. Esperamos el compromiso de todas para que el apoyo sea mutuo y funcione para la comunidad.",
+      "enlace": "https://chat.whatsapp.com/IqY3dzFbqIYEbIkFKTMW0w",
+      "boton": "Unirme al grupo"
+    },
+    {
+      "nombre": "Emprendedores",
+      "etiqueta": "",
+      "descripcion": "Comparte tu negocio, promociona tus productos o servicios y conecta con otros emprendedores.",
+      "enlace": "https://chat.whatsapp.com/JACevaDq2hOJ7hft9IawNT",
+      "boton": "Unirme al grupo"
+    },
+    {
+      "nombre": "Chicas Medellín",
+      "etiqueta": "Solo mujeres",
+      "descripcion": "Conoce amigas y disfruta planes, cafés, brunch, caminatas, eventos y creación de contenido.",
+      "enlace": "",
+      "boton": "Pedir acceso"
+    },
+    {
+      "nombre": "Canal de avisos",
+      "etiqueta": "",
+      "descripcion": "Anuncios importantes, eventos, Zooms, sorteos, novedades y lanzamientos.",
+      "enlace": "",
+      "boton": ""
+    }
+  ],
+  "canal_titulo": "Canal de campañas UGC",
+  "canal_descripcion": "Comparto campañas UGC para creadoras. Síguelo en WhatsApp para enterarte primero.",
+  "canal_enlace": "https://whatsapp.com/channel/0029VbDB3rV7YSdCUJrXS52t",
+  "canal_boton": "Seguir el canal",
+  "mensaje_whatsapp": "Hola Geral, me gustaría unirme a la comunidad."
+}

@@ -1,0 +1,284 @@
+# Panel de edición del sitio (Sveltia CMS).
+# Entra en https://geralzuluaga.com/admin/ e inicia sesión con tu token de GitHub (ver GUIA.md).
+# Cada vez que guardas, se crea un cambio en GitHub y el sitio se publica solo en 1 o 2 minutos.
+
+backend:
+  name: github
+  repo: vazkabrands/GERAL-PAGINA-WEB
+  branch: main
+
+site_url: https://geralzuluaga.com
+display_url: https://geralzuluaga.com
+locale: es
+media_folder: public/img/uploads
+public_folder: /img/uploads
+
+collections:
+  # ---------------------------------------------------------------- PORTAFOLIO
+  - name: portafolio
+    label: Portafolio (página de inicio)
+    files:
+      - name: videos
+        label: Videos por nicho
+        file: src/data/nichos.json
+        format: json
+        fields:
+          - label: Nichos y videos
+            name: nichos
+            widget: list
+            summary: "{{fields.titulo}}"
+            hint: "Arrastra para cambiar el orden. Dentro de cada nicho agregas, quitas, reordenas u ocultas videos."
+            fields:
+              - { label: Identificador (sin espacios ni tildes, ej. viajes), name: id, widget: string }
+              - { label: Título del nicho, name: titulo, widget: string }
+              - { label: Texto corto del botón, name: boton, widget: string, required: false }
+              - { label: Descripción corta, name: descripcion, widget: string, required: false }
+              - label: Videos
+                name: videos
+                widget: list
+                summary: "{{fields.titulo}}"
+                fields:
+                  - { label: Título del video, name: titulo, widget: string }
+                  - { label: Marca (si aplica), name: marca, widget: string, required: false }
+                  - { label: Miniatura (foto vertical), name: miniatura, widget: image, required: false, hint: "Mejor en formato vertical 9:16 y de menos de 300 KB." }
+                  - label: Plataforma
+                    name: plataforma
+                    widget: select
+                    options: [{ label: Instagram, value: instagram }, { label: TikTok, value: tiktok }, { label: YouTube, value: youtube }, { label: Otra, value: otra }]
+                    default: instagram
+                  - { label: Enlace del video, name: enlace, widget: string, required: false, hint: "Pega el enlace de Instagram, TikTok o YouTube. Al hacer clic se abre ahí." }
+                  - { label: "Archivo MP4 (opcional)", name: archivo_mp4, widget: file, required: false, hint: "Solo videos cortos y livianos (menos de 25 MB). Si lo subes, se reproduce dentro de la página." }
+                  - { label: Mostrar en la página, name: visible, widget: boolean, default: true, hint: "Apágalo para ocultar un video viejo sin borrarlo." }
+
+      - name: marcas
+        label: Marcas y testimonios
+        file: src/data/marcas.json
+        format: json
+        fields:
+          - { label: Título de la sección de marcas, name: marcas_titulo, widget: string }
+          - label: Marcas
+            name: marcas
+            widget: list
+            summary: "{{fields.nombre}}"
+            fields:
+              - { label: Nombre de la marca, name: nombre, widget: string }
+              - { label: Logo (cuadrado o con fondo transparente), name: logo, widget: image, required: false }
+          - { label: Título de la sección de testimonios, name: testimonios_titulo, widget: string }
+          - label: Testimonios
+            name: testimonios
+            widget: list
+            summary: "{{fields.autor}}: {{fields.texto}}"
+            fields:
+              - { label: Texto del mensaje, name: texto, widget: text }
+              - { label: De quién (ej. Marca X, por WhatsApp), name: autor, widget: string, required: false }
+              - { label: Captura del mensaje (opcional), name: captura, widget: image, required: false }
+
+      - name: inicio
+        label: Textos de la portada y Sobre mí
+        file: src/data/inicio.json
+        format: json
+        fields:
+          - { label: Título para Google (aparece en los resultados), name: seo_titulo, widget: string, hint: "Mantén 'community manager', 'UGC' y 'Medellín'. Máximo ~65 caracteres." }
+          - { label: Descripción para Google, name: seo_descripcion, widget: text, hint: "Máximo ~155 caracteres." }
+          - label: Portada
+            name: hero
+            widget: object
+            fields:
+              - { label: Nombre, primera línea, name: titular_linea1, widget: string }
+              - { label: Nombre, segunda línea, name: titular_linea2, widget: string }
+              - { label: Qué eres (una línea), name: rol, widget: string }
+              - { label: Promesa, name: promesa, widget: string }
+              - { label: Texto del botón principal, name: boton_principal, widget: string }
+              - { label: Texto del botón secundario, name: boton_secundario, widget: string }
+              - { label: Foto de portada (vertical), name: foto, widget: image, required: false }
+          - label: Sobre mí
+            name: sobre_mi
+            widget: object
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Foto, name: foto, widget: image, required: false }
+              - { label: Párrafos, name: parrafos, widget: list, field: { label: Párrafo, name: parrafo, widget: text } }
+              - { label: Rasgos (frases cortas), name: rasgos, widget: list, field: { label: Frase, name: frase, widget: string } }
+          - { label: Título de la sección de contenido, name: contenido_titulo, widget: string }
+          - { label: Texto de la sección de contenido, name: contenido_intro, widget: string }
+          - label: Preguntas frecuentes adicionales
+            name: faq_extra
+            widget: list
+            required: false
+            summary: "{{fields.pregunta}}"
+            hint: "Las preguntas básicas se generan solas con tus datos. Aquí agregas otras."
+            fields:
+              - { label: Pregunta, name: pregunta, widget: string }
+              - { label: Respuesta, name: respuesta, widget: text }
+
+  # ---------------------------------------------------------------- OTRAS PÁGINAS
+  - name: paginas
+    label: Servicios y comunidad
+    files:
+      - name: servicios
+        label: Página de servicios
+        file: src/data/servicios.json
+        format: json
+        fields:
+          - { label: Mostrar esta página, name: activa, widget: boolean, default: true }
+          - { label: Título para Google, name: seo_titulo, widget: string }
+          - { label: Descripción para Google, name: seo_descripcion, widget: text }
+          - { label: Titular, name: titular, widget: string }
+          - { label: Introducción, name: intro, widget: text }
+          - { label: Nombre de la agencia, name: agencia_nombre, widget: string, required: false }
+          - { label: Enlace de la agencia, name: agencia_url, widget: string, required: false }
+          - label: Servicios
+            name: servicios
+            widget: list
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: Nombre del servicio, name: titulo, widget: string }
+              - { label: Descripción, name: descripcion, widget: text }
+              - { label: Qué incluye (opcional), name: incluye, widget: list, required: false, field: { label: Ítem, name: item, widget: string } }
+          - { label: Título del cierre, name: cta_titulo, widget: string }
+          - { label: Texto del cierre, name: cta_texto, widget: string }
+          - { label: Texto del botón, name: boton, widget: string }
+          - { label: Mensaje que se envía por WhatsApp, name: mensaje_whatsapp, widget: string }
+
+      - name: comunidad
+        label: Página de la comunidad
+        file: src/data/comunidad.json
+        format: json
+        fields:
+          - { label: Mostrar esta página, name: activa, widget: boolean, default: true }
+          - { label: Título para Google, name: seo_titulo, widget: string }
+          - { label: Descripción para Google, name: seo_descripcion, widget: text }
+          - { label: Titular, name: titular, widget: string }
+          - { label: Introducción, name: intro, widget: text }
+          - { label: Enlace de la comunidad de WhatsApp (principal), name: comunidad_enlace, widget: string, required: false }
+          - { label: Texto del botón de la comunidad, name: comunidad_boton, widget: string, required: false }
+          - { label: Frase que explica por qué unirse a la comunidad, name: comunidad_nota, widget: text, required: false }
+          - { label: "Cifra de la comunidad (ej. +600)", name: comunidad_cifra, widget: string, required: false }
+          - { label: Texto de la cifra de la comunidad, name: comunidad_cifra_texto, widget: string, required: false }
+          - { label: "Cifra del canal (ej. +1.200)", name: canal_cifra, widget: string, required: false }
+          - { label: Texto de la cifra del canal, name: canal_cifra_texto, widget: string, required: false }
+          - { label: Título de la lista de grupos, name: grupos_titulo, widget: string }
+          - label: Grupos de la comunidad
+            name: grupos
+            widget: list
+            summary: "{{fields.nombre}}"
+            hint: "Arrastra para cambiar el orden."
+            fields:
+              - { label: Nombre del grupo, name: nombre, widget: string }
+              - { label: Etiqueta (ej. Solo mujeres), name: etiqueta, widget: string, required: false }
+              - { label: Descripción, name: descripcion, widget: text }
+              - { label: Enlace de invitación de WhatsApp, name: enlace, widget: string, required: false, hint: "Si lo dejas vacío y hay texto en el botón, la persona te escribe para pedir acceso. Sin enlace y sin botón, no se muestra botón." }
+              - { label: Texto del botón, name: boton, widget: string, required: false }
+          - { label: Título del canal, name: canal_titulo, widget: string }
+          - { label: Descripción del canal, name: canal_descripcion, widget: text }
+          - { label: Enlace del canal de WhatsApp, name: canal_enlace, widget: string, required: false }
+          - { label: Texto del botón del canal, name: canal_boton, widget: string }
+          - { label: Mensaje que se envía por WhatsApp, name: mensaje_whatsapp, widget: string }
+
+      - name: ofertas
+        label: Asesorías, diagnósticos y ebooks
+        file: src/data/ofertas.json
+        format: json
+        fields:
+          - { label: Mostrar esta página, name: activa, widget: boolean, default: true, hint: "La página aparece cuando hay al menos una oferta visible." }
+          - { label: Título para Google, name: seo_titulo, widget: string }
+          - { label: Descripción para Google, name: seo_descripcion, widget: text }
+          - { label: Titular, name: titular, widget: string }
+          - { label: Introducción, name: intro, widget: text }
+          - label: Ofertas
+            name: ofertas
+            widget: list
+            summary: "{{fields.nombre}}"
+            hint: "Cada oferta nace oculta. Cuando esté lista, enciende 'Mostrar en la página'."
+            fields:
+              - label: Tipo
+                name: tipo
+                widget: select
+                options: [{ label: Asesoría, value: asesoria }, { label: Diagnóstico, value: diagnostico }, { label: Ebook o guía, value: ebook }, { label: Otro recurso, value: otro }]
+              - { label: Nombre, name: nombre, widget: string }
+              - { label: Para quién es, name: para_quien, widget: string, required: false }
+              - { label: Descripción, name: descripcion, widget: text }
+              - { label: Qué incluye (opcional), name: incluye, widget: list, required: false, field: { label: Ítem, name: item, widget: string } }
+              - { label: Precio (texto libre, ej. "$90.000 COP"), name: precio, widget: string, required: false }
+              - { label: Texto del botón, name: boton, widget: string }
+              - { label: Enlace de pago o agenda (opcional), name: enlace, widget: string, required: false, hint: "Si lo dejas vacío, el botón abre un WhatsApp contigo." }
+              - { label: Imagen o portada (opcional), name: imagen, widget: image, required: false }
+              - { label: Mostrar en la página, name: visible, widget: boolean, default: false }
+          - { label: Título del cierre, name: cta_titulo, widget: string }
+          - { label: Texto del cierre, name: cta_texto, widget: string }
+          - { label: Texto del botón del cierre, name: cta_boton, widget: string }
+          - { label: Mensaje que se envía por WhatsApp, name: mensaje_whatsapp, widget: string }
+
+      - name: blog_pagina
+        label: Textos de la página del blog
+        file: src/data/blog.json
+        format: json
+        fields:
+          - { label: Título para Google, name: seo_titulo, widget: string }
+          - { label: Descripción para Google, name: seo_descripcion, widget: text }
+          - { label: Titular, name: titular, widget: string }
+          - { label: Introducción, name: intro, widget: text }
+          - { label: Título de la sección en la portada, name: home_titulo, widget: string }
+          - { label: Título del cierre de cada artículo, name: cta_titulo, widget: string }
+          - { label: Texto del cierre, name: cta_texto, widget: string }
+          - { label: Texto del botón, name: cta_boton, widget: string }
+          - { label: Mensaje que se envía por WhatsApp, name: mensaje_whatsapp, widget: string }
+
+  # ---------------------------------------------------------------- BLOG
+  - name: blog
+    label: Blog (artículos)
+    folder: src/blog
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    summary: "{{titulo}}"
+    sortable_fields: [fecha, titulo]
+    fields:
+      - { label: Título, name: titulo, widget: string }
+      - { label: Fecha, name: fecha, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: Resumen (aparece en Google y en la lista), name: resumen, widget: text, hint: "Una o dos frases, máximo ~155 caracteres." }
+      - { label: Imagen de portada (horizontal 16:9), name: imagen, widget: image, required: false }
+      - { label: Publicar, name: publicado, widget: boolean, default: false, hint: "Apagado = borrador, no se ve en la página." }
+      - { label: Contenido, name: body, widget: markdown }
+
+  # ---------------------------------------------------------------- DATOS GENERALES
+  - name: ajustes
+    label: Datos generales
+    files:
+      - name: general
+        label: Contacto, redes y textos del pie
+        file: src/data/sitio.json
+        format: json
+        fields:
+          - { label: Nombre completo, name: nombre, widget: string }
+          - { label: Apodo, name: apodo, widget: string, required: false }
+          - { label: Ciudad, name: ciudad, widget: string }
+          - { label: Departamento o región, name: region, widget: string }
+          - { label: Ubicación visible, name: ubicacion, widget: string }
+          - { label: Correo, name: email, widget: string }
+          - { label: "WhatsApp solo con números y con código de país (ej. 573103566824)", name: whatsapp, widget: string }
+          - { label: WhatsApp como se muestra, name: whatsapp_visible, widget: string }
+          - { label: Usuario de Instagram (sin @), name: instagram, widget: string }
+          - { label: Usuario de TikTok (sin @), name: tiktok, widget: string }
+          - { label: Imagen para compartir el enlace (1200x630), name: foto_og, widget: image, required: false }
+          - { label: Texto del botón del menú, name: boton_header, widget: string }
+          - { label: Mensaje que se envía por WhatsApp, name: mensaje_whatsapp, widget: string }
+          - { label: Título del cierre de contacto, name: contacto_titulo, widget: string }
+          - { label: Texto del cierre de contacto, name: contacto_texto, widget: text }
+          - { label: Lema, name: lema, widget: string }
+      - name: analitica
+        label: Google, analítica y privacidad
+        file: src/data/analitica.json
+        format: json
+        fields:
+          - { label: "Google Search Console: código de verificación (solo el valor de content, sin etiquetas)", name: google_verificacion, widget: string, required: false, hint: "Si verificas por DNS en GoDaddy no necesitas esto." }
+          - { label: "Bing Webmaster: código de verificación", name: bing_verificacion, widget: string, required: false }
+          - { label: "Google Analytics 4: ID de medición (G-XXXXXXXXXX)", name: ga4_id, widget: string, required: false }
+          - { label: "Google Tag Manager: ID (GTM-XXXXXXX)", name: gtm_id, widget: string, required: false, hint: "Si usas Tag Manager, pon GA4 dentro de él y deja vacío el campo de GA4 para no contar dos veces." }
+          - { label: "Meta Pixel: ID numérico", name: meta_pixel_id, widget: string, required: false }
+          - { label: "TikTok Pixel: ID", name: tiktok_pixel_id, widget: string, required: false }
+          - { label: Texto del aviso de cookies, name: aviso_texto, widget: string }
+          - { label: "Correo para solicitudes de privacidad (vacío = el correo general)", name: responsable_correo, widget: string, required: false }
+          - { label: Título de la página de privacidad, name: privacidad_titulo, widget: string }
+          - { label: Texto adicional de privacidad, name: privacidad_extra, widget: text, required: false }

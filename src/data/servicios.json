@@ -1,0 +1,40 @@
+{
+  "activa": true,
+  "seo_titulo": "Community manager en Medellín | Geraldinne Zuluaga",
+  "seo_descripcion": "Community manager en Medellín: redes sociales, estrategia digital, creación de contenido, branding y automatización para marcas que quieren crecer.",
+  "titular": "Marketing y redes para marcas que quieren crecer",
+  "intro": "Además de crear contenido, ayudo a marcas que están empezando a ordenar su estrategia, su imagen y sus redes.",
+  "agencia_nombre": "",
+  "agencia_url": "",
+  "servicios": [
+    {
+      "titulo": "Estrategia digital",
+      "descripcion": "Definimos objetivos, público y canales para que cada publicación tenga una razón de ser.",
+      "incluye": []
+    },
+    {
+      "titulo": "Community management y redes sociales",
+      "descripcion": "Planeación, publicación, respuesta a tu comunidad y seguimiento de tus redes para que tu marca esté presente y se note.",
+      "incluye": []
+    },
+    {
+      "titulo": "Creación de contenido",
+      "descripcion": "Contenido auténtico en foto y video, pensado para conectar con tu audiencia.",
+      "incluye": []
+    },
+    {
+      "titulo": "Branding",
+      "descripcion": "Identidad visual y mensaje coherentes, para que tu marca se reconozca en todos lados.",
+      "incluye": []
+    },
+    {
+      "titulo": "Automatización",
+      "descripcion": "Procesos y herramientas que te quitan tareas repetitivas y te dan tiempo para lo importante.",
+      "incluye": []
+    }
+  ],
+  "cta_titulo": "¿Empezamos?",
+  "cta_texto": "Cuéntame qué necesita tu marca y te propongo por dónde empezar.",
+  "boton": "Pedir una propuesta",
+  "mensaje_whatsapp": "Hola Geral, vi tu página y me interesa conocer tus servicios de marketing y redes."
+}

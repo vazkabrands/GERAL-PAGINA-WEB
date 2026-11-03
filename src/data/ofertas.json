@@ -1,0 +1,73 @@
+{
+  "activa": true,
+  "seo_titulo": "Asesorías de UGC y marketing para marcas nuevas | Geraldinne Zuluaga",
+  "seo_descripcion": "Asesorías, diagnósticos y ebooks de contenido UGC y marketing para marcas que están empezando y creadoras que quieren crecer. Medellín, Colombia.",
+  "titular": "Asesorías, diagnósticos y recursos",
+  "intro": "Para marcas que están empezando y creadoras que quieren crecer: acompañamiento claro y herramientas que puedes usar desde hoy.",
+  "ofertas": [
+    {
+      "tipo": "asesoria",
+      "nombre": "Asesoría de marketing para marcas que están empezando",
+      "para_quien": "Emprendedores y marcas nuevas que quieren ordenar su estrategia de contenido y redes.",
+      "descripcion": "Una sesión para entender dónde está tu marca, definir por dónde empezar y salir con un plan claro.",
+      "incluye": [],
+      "precio": "",
+      "boton": "Reservar asesoría",
+      "enlace": "",
+      "imagen": "",
+      "visible": false
+    },
+    {
+      "tipo": "asesoria",
+      "nombre": "Asesoría de UGC para creadoras",
+      "para_quien": "Creadoras que quieren empezar o mejorar su camino con marcas.",
+      "descripcion": "Revisamos tu perfil, tu contenido y tu forma de presentarte a las marcas para que puedas crecer con claridad.",
+      "incluye": [],
+      "precio": "",
+      "boton": "Reservar asesoría",
+      "enlace": "",
+      "imagen": "",
+      "visible": false
+    },
+    {
+      "tipo": "diagnostico",
+      "nombre": "Diagnóstico de marca",
+      "para_quien": "Marcas que quieren saber qué mejorar en su contenido y redes.",
+      "descripcion": "Un análisis de cómo se ve hoy tu marca en redes, con recomendaciones concretas de qué ajustar primero.",
+      "incluye": [],
+      "precio": "",
+      "boton": "Pedir diagnóstico",
+      "enlace": "",
+      "imagen": "",
+      "visible": false
+    },
+    {
+      "tipo": "diagnostico",
+      "nombre": "Diagnóstico de portafolio UGC",
+      "para_quien": "Creadoras UGC que quieren presentarse mejor ante las marcas.",
+      "descripcion": "Una revisión de tu portafolio y tu perfil, con recomendaciones para que las marcas te encuentren y te escojan.",
+      "incluye": [],
+      "precio": "",
+      "boton": "Pedir diagnóstico",
+      "enlace": "",
+      "imagen": "",
+      "visible": false
+    },
+    {
+      "tipo": "ebook",
+      "nombre": "Ebook: título por definir",
+      "para_quien": "",
+      "descripcion": "Describe aquí de qué trata tu ebook y qué va a lograr quien lo lea.",
+      "incluye": [],
+      "precio": "",
+      "boton": "Comprar ebook",
+      "enlace": "",
+      "imagen": "",
+      "visible": false
+    }
+  ],
+  "cta_titulo": "¿No sabes cuál te conviene?",
+  "cta_texto": "Cuéntame en qué punto estás y te recomiendo por dónde empezar.",
+  "cta_boton": "Escríbeme",
+  "mensaje_whatsapp": "Hola Geral, vi tus asesorías y quiero saber cuál me conviene."
+}

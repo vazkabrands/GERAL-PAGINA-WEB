@@ -1,0 +1,13 @@
+{
+  "name": "geralzuluaga-web",
+  "private": true,
+  "type": "module",
+  "description": "Sitio de Geraldinne Zuluaga: portafolio, servicios, comunidad y blog",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "marked": "18.1.1",
+    "yaml": "2.9.1"
+  }
+}
