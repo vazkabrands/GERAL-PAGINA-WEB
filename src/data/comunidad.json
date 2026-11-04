@@ -11,35 +11,35 @@
   "comunidad_cifra_texto": "mujeres en la comunidad",
   "canal_cifra": "+1.200",
   "canal_cifra_texto": "personas en el canal de campañas UGC",
-  "grupos_titulo": "Grupos dentro de la comunidad",
+  "grupos_titulo": "Dentro de la comunidad encuentras",
   "grupos": [
     {
       "nombre": "Oportunities",
       "etiqueta": "",
       "descripcion": "Cursos gratuitos, capacitaciones, herramientas, IA, marketing, creación de contenido y recursos de valor.",
-      "enlace": "https://chat.whatsapp.com/HWxiQOo7YZyKCloOki3b8z",
-      "boton": "Unirme al grupo"
+      "enlace": "",
+      "boton": ""
     },
     {
       "nombre": "Apoyo en posts",
       "etiqueta": "",
       "descripcion": "Dinámicas para apoyarnos con likes, comentarios y compartidos. Esperamos el compromiso de todas para que el apoyo sea mutuo y funcione para la comunidad.",
-      "enlace": "https://chat.whatsapp.com/IqY3dzFbqIYEbIkFKTMW0w",
-      "boton": "Unirme al grupo"
+      "enlace": "",
+      "boton": ""
     },
     {
       "nombre": "Emprendedores",
       "etiqueta": "",
       "descripcion": "Comparte tu negocio, promociona tus productos o servicios y conecta con otros emprendedores.",
-      "enlace": "https://chat.whatsapp.com/JACevaDq2hOJ7hft9IawNT",
-      "boton": "Unirme al grupo"
+      "enlace": "",
+      "boton": ""
     },
     {
       "nombre": "Chicas Medellín",
       "etiqueta": "Solo mujeres",
       "descripcion": "Conoce amigas y disfruta planes, cafés, brunch, caminatas, eventos y creación de contenido.",
       "enlace": "",
-      "boton": "Pedir acceso"
+      "boton": ""
     },
     {
       "nombre": "Canal de avisos",

@@ -509,7 +509,7 @@ function paginaComunidad() {
 <p class="lead">${esc(C.intro)}</p>
 ${cifras.length ? `<ul class="cifras">${cifras.map(([n, t]) => `<li><strong>${esc(n)}</strong><span>${esc(t)}</span></li>`).join('')}</ul>` : ''}
 ${urlSegura(C.comunidad_enlace) ? `<p class="nota-com">${esc(C.comunidad_nota)}</p>` : ''}
-<div class="hero-cta">${urlSegura(C.comunidad_enlace) ? `<a class="btn btn-cafe" href="${esc(urlSegura(C.comunidad_enlace))}" target="_blank" rel="noopener">${ic('wa')} ${esc(C.comunidad_boton || 'Unirme a la comunidad')}</a>` : ''}<a class="btn btn-linea" href="#grupos">Ver los grupos</a>${canalUrl ? `<a class="btn btn-linea" href="#canal">${esc(C.canal_titulo)}</a>` : ''}</div>
+<div class="hero-cta">${urlSegura(C.comunidad_enlace) ? `<a class="btn btn-cafe" href="${esc(urlSegura(C.comunidad_enlace))}" target="_blank" rel="noopener">${ic('wa')} ${esc(C.comunidad_boton || 'Unirme a la comunidad')}</a>` : ''}${canalUrl ? `<a class="btn btn-linea" href="#canal">${esc(C.canal_titulo)}</a>` : ''}</div>
 </div></section>
 <section class="seccion" id="grupos" aria-labelledby="t-grupos" style="padding-top:24px"><div class="wrap">
 <h2 class="titulo-sec" id="t-grupos" style="font-size:clamp(2.2rem,5vw,3.2rem)">${esc(C.grupos_titulo)}</h2>
