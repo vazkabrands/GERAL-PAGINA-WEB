@@ -402,3 +402,89 @@ body{font-size:1.05rem;line-height:1.65}
 .barra-in .ic{width:17px;height:17px}
 .barra-redes :focus-visible{outline-color:var(--dorado)}
 @media (max-width:560px){.barra-in span{display:none}}
+
+/* ===================== Premium v2: todo claro, sin franjas café ===================== */
+:root{--papel:#fbf6ec;--sombra:0 1px 2px rgb(101 57 36 / .06),0 18px 40px -18px rgb(101 57 36 / .22)}
+body{background:var(--crema)}
+
+/* Barra de redes clara */
+.barra-redes{background:var(--crema);color:var(--tinta-suave);border-bottom:1px solid var(--linea)}
+.barra-in a{color:var(--cafe)}
+.barra-in a:hover{background:var(--cafe);color:var(--crema)}
+.barra-redes :focus-visible{outline-color:var(--cafe)}
+
+/* Cifras: tres columnas con filetes finos */
+.cifras-banda{background:var(--crema);color:var(--tinta);border-block:1px solid var(--linea)}
+.cifras-lista li{border-color:var(--linea)!important}
+.cifras-lista strong{color:var(--cafe)}
+.cifras-lista span{color:var(--tinta-suave)}
+
+/* Secciones */
+.seccion-arena{background:var(--papel);border-block:1px solid var(--linea)}
+.titulo-sec{font-size:clamp(2.6rem,5.4vw,4rem)}
+.seccion{padding:104px 0}
+
+/* Servicios en portada: tarjetas blancas con sombra suave */
+.tarjetas{background:none;border:0;gap:20px}
+.tarjetas li{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:34px 32px;box-shadow:var(--sombra);transition:transform .25s,box-shadow .25s}
+.tarjetas li:hover{transform:translateY(-3px)}
+.tarjetas h3{font-size:1.9rem}
+
+/* Marcas: tira tipográfica */
+.marcas{background:var(--crema);color:var(--tinta);border-top:0;padding:96px 0 40px}
+.logos{display:flex;flex-wrap:wrap;gap:18px 46px;border:0;margin-top:34px;align-items:center}
+.logos li{border:0;margin:0;padding:0;display:block}
+.logos img{height:44px;width:auto;object-fit:contain;filter:grayscale(1) contrast(.9);opacity:.8}
+.marca-nombre{font:400 clamp(1.7rem,3vw,2.3rem)/1.1 var(--display);color:var(--cafe);letter-spacing:-.01em}
+.logos li:not(:last-child) .marca-nombre::after{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--dorado);margin-left:46px;vertical-align:middle;transform:translateY(-2px)}
+@media (max-width:700px){.logos li:not(:last-child) .marca-nombre::after{margin-left:30px}.logos{gap:12px 30px}}
+
+/* Testimonios: carrusel claro */
+.testimonios{background:var(--crema);color:var(--tinta);padding:56px 0 104px}
+.testimonios .titulo-sec{color:var(--cafe)}
+.carrusel{position:relative}
+.carrusel-pista{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-20px;padding:6px 20px 28px;scroll-padding-inline:20px}
+.carrusel-pista::-webkit-scrollbar{display:none}
+.carrusel-pista ul{list-style:none;padding:0;display:flex;gap:20px}
+.citas{display:flex;margin:0}
+.cita{flex:0 0 min(430px,86%);scroll-snap-align:start;position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--linea);border-radius:16px;padding:40px 32px 28px;box-shadow:var(--sombra);color:var(--tinta)}
+.cita:nth-child(even){justify-self:auto;border-radius:16px}
+.comillas{position:absolute;top:6px;left:26px;font:400 5rem/1 var(--display);color:var(--dorado);pointer-events:none}
+.cita blockquote{font:400 1.45rem/1.35 var(--display);font-style:normal;color:var(--cafe-osc);margin-top:14px}
+.cita cite{margin-top:auto;padding-top:22px;font:500 .92rem var(--texto);color:var(--tinta-suave);font-style:normal}
+.cita cite::before{content:"";display:block;width:36px;height:2px;background:var(--dorado);margin-bottom:12px}
+.carrusel-ctl{display:flex;align-items:center;gap:16px;margin-top:6px}
+.carrusel-ctl[hidden]{display:none}
+.carrusel-ctl button{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1px solid var(--cafe);background:transparent;color:var(--cafe);cursor:pointer;transition:background-color .15s,color .15s}
+.carrusel-ctl button:hover:not(:disabled){background:var(--cafe);color:var(--crema)}
+.carrusel-ctl button:disabled{opacity:.35;cursor:default}
+.puntos{display:flex;gap:8px}
+.puntos i{width:8px;height:8px;border-radius:50%;background:var(--linea);transition:background-color .2s,width .2s}
+.puntos i.on{background:var(--cafe);width:24px;border-radius:8px}
+
+/* Puertas */
+.puertas{gap:22px}
+.puerta,.puerta-cafe,.puerta-oro,.puerta-suave{background:#fff;color:var(--tinta);border:1px solid var(--linea);border-radius:16px;box-shadow:var(--sombra);padding:38px 34px;min-height:260px}
+.puerta h3,.puerta-cafe h3{color:var(--cafe)}
+.puerta p{color:var(--tinta-suave)}
+
+/* Contacto y pie claros */
+.contacto{background:var(--papel);color:var(--tinta);border-top:1px solid var(--linea);padding:104px 0 64px}
+.contacto .titulo-sec{color:var(--cafe)}
+.contacto-datos .ic{color:var(--cafe)}
+.contacto :focus-visible{outline-color:var(--cafe)}
+.lema{color:var(--cafe);font-size:1.7rem}
+.pie{background:var(--crema);color:var(--tinta-suave);border-top:1px solid var(--linea);padding:26px 0}
+.pie a{color:var(--tinta-suave);text-decoration:none}
+.pie a:hover{color:var(--cafe);text-decoration:underline}
+
+/* Banda de cierre en páginas internas */
+.banda{background:var(--papel);border-block:1px solid var(--linea)}
+
+/* Detalles de acabado */
+.btn-oro{background:var(--dorado);color:var(--cafe-osc)}
+.top{box-shadow:0 1px 0 var(--linea)}
+.thumb{box-shadow:0 14px 30px -18px rgb(101 57 36 / .45)}
+.logos .marca-nombre{font:400 clamp(1.7rem,3vw,2.3rem)/1.1 var(--display);color:var(--cafe)}
+.titulo-sec,.pag-hero h1{text-wrap:balance}
+.sec-cab{max-width:68ch}

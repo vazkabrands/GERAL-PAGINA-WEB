@@ -56,6 +56,7 @@ collections:
         format: json
         fields:
           - { label: Título de la sección de marcas, name: marcas_titulo, widget: string }
+          - { label: Frase bajo el título de marcas, name: marcas_intro, widget: string, required: false }
           - label: Marcas
             name: marcas
             widget: list
@@ -101,6 +102,18 @@ collections:
               - { label: Rasgos (frases cortas), name: rasgos, widget: list, field: { label: Frase, name: frase, widget: string } }
           - { label: Título de la sección de contenido, name: contenido_titulo, widget: string }
           - { label: Texto de la sección de contenido, name: contenido_intro, widget: string }
+          - { label: Frase corta de Sobre mí (portada), name: sobre_mi_resumen, widget: text, required: false }
+          - { label: Título de servicios en la portada, name: servicios_home_titulo, widget: string, required: false }
+          - { label: Título del portafolio en la portada, name: portafolio_home_titulo, widget: string, required: false }
+          - { label: Frase del portafolio en la portada, name: portafolio_home_intro, widget: string, required: false }
+          - label: Cifras de la portada
+            name: cifras
+            widget: list
+            required: false
+            summary: "{{fields.numero}} {{fields.texto}}"
+            fields:
+              - { label: Número (ej. +50), name: numero, widget: string }
+              - { label: Texto, name: texto, widget: string }
           - label: Preguntas frecuentes adicionales
             name: faq_extra
             widget: list

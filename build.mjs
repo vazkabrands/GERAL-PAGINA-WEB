@@ -218,14 +218,13 @@ const persona = () => ({
 
 function preguntas() {
   const q = [];
-  q.push([`¿Quién es ${S.nombre}?`, `${S.nombre} es ${minus1(P.hero.rol)}. ${P.hero.promesa}`]);
-  if (nichos.length) q.push(['¿Qué tipo de contenido UGC crea?', `Crea contenido UGC para marcas de todos los nichos. Algunos de sus trabajos son de ${lista(nichos.map((n) => n.titulo.toLowerCase()))}.`]);
-  q.push([`¿Hay una community manager o creadora UGC en ${S.ciudad}?`, `Sí. ${S.nombre} trabaja desde ${S.ciudad}, ${S.region}, y colabora con marcas de toda Colombia.`]);
-  if (marcas.length) q.push(['¿Con qué marcas ha trabajado?', `Ha colaborado con ${lista(marcas.map((m) => m.nombre))}.`]);
-  if (serviciosOn) q.push(['¿Ofrece servicios de marketing y redes?', `Sí. ${SV.intro}`]);
-  if (ofertasOn) q.push(['¿Ofrece asesorías, diagnósticos o ebooks?', `Sí. ${O.intro}`]);
-  if (comunidadOn) q.push(['¿Qué es la comunidad de mujeres?', C.intro]);
-  q.push(['¿Cómo contactarla para una colaboración?', `Por WhatsApp al ${S.whatsapp_visible}, por correo a ${S.email}, o por Instagram y TikTok en @${S.instagram} y @${S.tiktok}.`]);
+  q.push(['¿Quién eres?', `Soy ${S.nombre}, ${minus1(P.hero.rol)}. ${P.hero.promesa}`]);
+  q.push(['¿Trabajas como community manager o como creadora de contenido?', `Las dos cosas. Creo contenido UGC para marcas y también manejo redes y comunidades como community manager. Trabajo desde ${S.ciudad}, ${S.region}, con marcas de Colombia y también a nivel internacional, de forma remota.`]);
+  if (nichos.length) q.push(['¿Qué tipo de contenido UGC creas?', `Me adapto a cualquier nicho. Algunos de mis trabajos son de ${lista(nichos.map((n) => n.titulo.toLowerCase()))}.`]);
+  if (marcas.length) q.push(['¿Con qué marcas has trabajado?', `He colaborado con más de 50 marcas, entre ellas ${lista(marcas.map((m) => m.nombre))}.`]);
+  if (serviciosOn) q.push(['¿Ofreces servicios de marketing y redes?', `Sí. ${SV.intro}`]);
+  if (ofertasOn) q.push(['¿Ofreces asesorías, diagnósticos o ebooks?', `Sí. ${O.intro}`]);
+  q.push(['¿Cómo puedo contactarte para una colaboración?', `Escríbeme por WhatsApp al ${S.whatsapp_visible}, por correo a ${S.email}, o por Instagram y TikTok en @${S.instagram} y @${S.tiktok}.`]);
   for (const e of P.faq_extra || []) if (e.pregunta && e.respuesta) q.push([e.pregunta, e.respuesta]);
   return q;
 }
@@ -308,13 +307,16 @@ const seccionNichos = (todos = true) => nichos.map((n) => `<article class="nicho
 </article>`).join('\n');
 
 const seccionMarcas = () => marcas.length ? `<section class="marcas" id="marcas" aria-labelledby="t-marcas"><div class="wrap">
-<h2 class="titulo-sec" id="t-marcas">${esc(P.marcas_titulo)}</h2>
-<ul class="logos">${marcas.map((m) => `<li><div class="logo">${existeArchivo(m.logo) ? `<img src="${esc(m.logo)}" alt="Logo de ${esc(m.nombre)}" loading="lazy">` : `<b aria-hidden="true">${esc(m.nombre.charAt(0))}</b>`}</div><span>${esc(m.nombre)}</span></li>`).join('')}</ul>
+<div class="sec-cab"><h2 class="titulo-sec" id="t-marcas">${esc(P.marcas_titulo)}</h2>${P.marcas_intro ? `<p>${esc(P.marcas_intro)}</p>` : ''}</div>
+<ul class="logos">${marcas.map((m) => `<li>${existeArchivo(m.logo) ? `<img src="${esc(m.logo)}" alt="Logo de ${esc(m.nombre)}" loading="lazy">` : `<span class="marca-nombre">${esc(m.nombre)}</span>`}</li>`).join('')}</ul>
 </div></section>` : '';
 
 const seccionTestimonios = () => (P.testimonios || []).length ? `<section class="testimonios" id="testimonios" aria-labelledby="t-testi"><div class="wrap">
-<h2 class="titulo-sec" id="t-testi">${esc(P.testimonios_titulo)}</h2>
-<ul class="citas">${P.testimonios.map((t) => `<li class="cita"><blockquote><p>${esc(t.texto)}</p></blockquote>${t.autor ? `<cite>${esc(t.autor)}</cite>` : ''}${existeArchivo(t.captura) ? `<img src="${esc(t.captura)}" alt="Captura del mensaje de ${esc(t.autor || 'una marca')}" loading="lazy">` : ''}</li>`).join('')}</ul>
+<div class="sec-cab"><h2 class="titulo-sec" id="t-testi">${esc(P.testimonios_titulo)}</h2></div>
+<div class="carrusel" data-carrusel>
+<div class="carrusel-pista" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="${esc(P.testimonios_titulo)}"><ul>${P.testimonios.map((t) => `<li class="cita"><span class="comillas" aria-hidden="true">“</span><blockquote><p>${esc(t.texto)}</p></blockquote>${t.autor ? `<cite>${esc(t.autor)}</cite>` : ''}${existeArchivo(t.captura) ? `<img src="${esc(t.captura)}" alt="Captura del mensaje de ${esc(t.autor || 'una marca')}" loading="lazy">` : ''}</li>`).join('')}</ul></div>
+<div class="carrusel-ctl" hidden><button type="button" data-prev aria-label="Testimonio anterior"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="puntos" aria-hidden="true"></span><button type="button" data-next aria-label="Testimonio siguiente"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+</div>
 </div></section>` : '';
 
 const bloqueSobre = (completo) => {
@@ -374,10 +376,11 @@ ${blogOn && posts.length ? `<section class="seccion" aria-labelledby="t-blog-hom
 </div></section>` : ''}
 
 ${ofertasOn || comunidadOn ? `<section class="seccion seccion-arena" aria-labelledby="t-mas"><div class="wrap">
-<div class="sec-cab"><h2 class="titulo-sec" id="t-mas">Más formas de trabajar conmigo</h2></div>
+<div class="sec-cab"><h2 class="titulo-sec" id="t-mas">Más formas de conectar</h2></div>
 <div class="puertas">
-${ofertasOn ? `<article class="puerta puerta-cafe"><h3>${esc(O.titular)}</h3><p>${esc(O.intro)}</p><a class="btn btn-oro" href="/asesorias/">Ver asesorías</a></article>` : ''}
-${comunidadOn ? `<article class="puerta puerta-oro"><h3>${esc(C.titular)}</h3><p>${esc(C.intro)}</p><a class="btn btn-cafe" href="/comunidad/">Conocer la comunidad</a></article>` : ''}
+${comunidadOn ? `<article class="puerta"><h3>${esc(C.titular)}</h3><p>${esc(C.intro)}</p><a class="btn btn-cafe" href="/comunidad/">Conocer la comunidad</a></article>
+<article class="puerta"><h3>${esc(C.canal_titulo)}</h3><p>${esc(C.canal_descripcion)}</p><a class="btn btn-linea" href="/comunidad/#canal">Ver el canal</a></article>` : ''}
+${ofertasOn ? `<article class="puerta"><h3>${esc(O.titular)}</h3><p>${esc(O.intro)}</p><a class="btn btn-linea" href="/asesorias/">Ver asesorías</a></article>` : ''}
 </div></div></section>` : ''}
 
 <section class="seccion" id="preguntas" aria-labelledby="t-faq"><div class="wrap faq">
@@ -398,7 +401,7 @@ ${preguntas().map(([a, b]) => `<details><summary>${esc(a)}</summary><p>${esc(b)}
 
 function paginaPortafolio() {
   const titulo = `Portafolio UGC en Medellín | ${S.nombre}`;
-  const desc = 'Portafolio de contenido UGC: videos para marcas de cuidado capilar, viajes, gastronomía y belleza, con las marcas con las que he trabajado.';
+  const desc = 'Portafolio de contenido UGC en Medellín: videos para marcas de distintos nichos y las marcas con las que he trabajado.';
   const cuerpo = `
 <section class="pag-hero"><div class="wrap"><h1>Portafolio</h1><p class="lead">${esc(P.contenido_intro)}</p>
 <ul class="chips" aria-label="Nichos de contenido">${nichos.map((n) => `<li><a class="chip" href="#${esc(n.id)}">${esc(n.boton || n.titulo)}</a></li>`).join('')}</ul></div></section>
@@ -534,9 +537,9 @@ function llmsTxt() {
   L.push('## Páginas', '', `- [Portafolio UGC](${SITE}/): sobre mí, contenido por nicho, marcas, testimonios y contacto.`);
   if (serviciosOn) L.push(`- [Servicios de marketing y redes](${SITE}/servicios/): ${SV.intro}`);
   if (ofertasOn) L.push(`- [Asesorías, diagnósticos y recursos](${SITE}/asesorias/): ${O.intro}`);
-  if (comunidadOn) L.push(`- [Comunidad de creadoras](${SITE}/comunidad/): ${C.intro}`);
+  if (comunidadOn) L.push(`- [Comunidad de mujeres](${SITE}/comunidad/): ${C.intro}`);
   if (blogOn) L.push(`- [Blog](${SITE}/blog/): ${B.intro}`);
-  L.push('', '## Nichos de contenido', '');
+  L.push('', '## Ejemplos de contenido por nicho', '');
   for (const n of nichos) L.push(`- ${n.titulo}: ${n.videos.map((v) => v.titulo).join(', ')}.`);
   if (marcas.length) L.push('', '## Marcas con las que ha colaborado', '', lista(marcas.map((m) => m.nombre)) + '.');
   if (serviciosOn) L.push('', '## Servicios', '', ...SV.servicios.map((s) => `- ${s.titulo}: ${s.descripcion}`));

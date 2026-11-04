@@ -1,14 +1,14 @@
 {
   "activa": true,
   "seo_titulo": "Comunidad de mujeres en WhatsApp | Geraldinne Zuluaga",
-  "seo_descripcion": "Comunidad de mujeres para apoyarnos, aprender y crecer juntas: emprendedoras, apoyo en posts, planes en Medellín y un canal de campañas UGC.",
+  "seo_descripcion": "Comunidad de mujeres en WhatsApp para apoyarnos, aprender y crecer juntas: emprendimiento, contenido, apoyo en redes y planes en Medellín. Aparte, un canal con campañas UGC.",
   "titular": "Comunidad de mujeres",
-  "intro": "Un espacio para apoyarnos, aprender y crecer juntas. Hay grupos distintos según tus intereses: únete a los que más te gusten.",
+  "intro": "Una comunidad de mujeres para hablar de muchos temas: emprendimiento, contenido, aprendizaje y planes. Al unirte ves todos los grupos y recibes todos los avisos.",
   "comunidad_enlace": "https://chat.whatsapp.com/Hf6EbUxY1LPGFPOvlc5CJe",
   "comunidad_boton": "Unirme a la comunidad",
   "comunidad_nota": "Al unirte a la comunidad ves todos los grupos y recibes todos los avisos. Si entras solo a un grupo, no te llegan.",
-  "comunidad_cifra": "+600",
-  "comunidad_cifra_texto": "personas en la comunidad de WhatsApp",
+  "comunidad_cifra": "+150",
+  "comunidad_cifra_texto": "mujeres en la comunidad",
   "canal_cifra": "+1.200",
   "canal_cifra_texto": "personas en el canal de campañas UGC",
   "grupos_titulo": "Grupos dentro de la comunidad",
@@ -50,7 +50,7 @@
     }
   ],
   "canal_titulo": "Canal de campañas UGC",
-  "canal_descripcion": "Comparto campañas UGC para creadoras. Síguelo en WhatsApp para enterarte primero.",
+  "canal_descripcion": "Es aparte de la comunidad. Aquí comparto campañas UGC abiertas para creadoras, para que te enteres primero.",
   "canal_enlace": "https://whatsapp.com/channel/0029VbDB3rV7YSdCUJrXS52t",
   "canal_boton": "Seguir el canal",
   "mensaje_whatsapp": "Hola Geral, me gustaría unirme a la comunidad."

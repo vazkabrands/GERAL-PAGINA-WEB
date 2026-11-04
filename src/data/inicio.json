@@ -1,11 +1,11 @@
 {
   "seo_titulo": "Geraldinne Zuluaga | Creadora UGC y community manager en Medellín",
-  "seo_descripcion": "Creadora de contenido UGC y community manager en Medellín. Contenido auténtico para marcas de todos los nichos: capilar, viajes, gastronomía y belleza.",
+  "seo_descripcion": "Creadora de contenido UGC y community manager en Medellín. Contenido auténtico para marcas de cualquier nicho, en Colombia y a nivel internacional.",
   "hero": {
     "titular_linea1": "Geraldinne",
     "titular_linea2": "Zuluaga",
     "rol": "Creadora de contenido UGC y community manager en Medellín",
-    "promesa": "Contenido auténtico y estratégico para marcas de todos los nichos que quieren conectar.",
+    "promesa": "Contenido auténtico y estratégico para marcas de cualquier nicho que quieren conectar.",
     "boton_principal": "Escríbeme por WhatsApp",
     "boton_secundario": "Ver portafolio",
     "foto": "/img/portada.jpg"
@@ -27,20 +27,20 @@
     ]
   },
   "contenido_titulo": "Mi contenido",
-  "contenido_intro": "Trabajo con marcas de todos los nichos. Estos son algunos de mis trabajos.",
+  "contenido_intro": "Me adapto a cualquier nicho. Estos son algunos de mis trabajos.",
   "faq_extra": [],
   "cifras": [
+    {
+      "numero": "+50",
+      "texto": "marcas con las que he colaborado"
+    },
     {
       "numero": "+1.200",
       "texto": "personas siguen mis campañas UGC"
     },
     {
-      "numero": "+600",
+      "numero": "+150",
       "texto": "mujeres en mi comunidad de WhatsApp"
-    },
-    {
-      "numero": "4",
-      "texto": "nichos: capilar, viajes, gastronomía y belleza"
     }
   ],
   "servicios_home_titulo": "Qué puedo hacer por tu marca",

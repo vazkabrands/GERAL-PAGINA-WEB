@@ -75,3 +75,32 @@
   const previo = leer();
   if (previo === 'si') activar(); else if (previo !== 'no') caja.hidden = false;
 })();
+
+// Carrusel de testimonios (sin JS se puede deslizar igual).
+(() => {
+  document.querySelectorAll('[data-carrusel]').forEach((c) => {
+    const pista = c.querySelector('.carrusel-pista');
+    const items = [...pista.querySelectorAll('.cita')];
+    const ctl = c.querySelector('.carrusel-ctl');
+    if (!items.length || !ctl) return;
+    const prev = ctl.querySelector('[data-prev]'), next = ctl.querySelector('[data-next]');
+    const puntos = ctl.querySelector('.puntos');
+    puntos.innerHTML = items.map(() => '<i></i>').join('');
+    const pts = [...puntos.children];
+    const paso = () => (items[1] ? items[1].offsetLeft - items[0].offsetLeft : pista.clientWidth);
+    const actual = () => Math.min(items.length - 1, Math.max(0, Math.round(pista.scrollLeft / paso())));
+    const pintar = () => {
+      const i = actual();
+      pts.forEach((p, k) => p.classList.toggle('on', k === i));
+      prev.disabled = pista.scrollLeft <= 4;
+      next.disabled = pista.scrollLeft + pista.clientWidth >= pista.scrollWidth - 4;
+    };
+    const ir = (d) => pista.scrollBy({ left: d * paso(), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    prev.addEventListener('click', () => ir(-1));
+    next.addEventListener('click', () => ir(1));
+    pista.addEventListener('scroll', () => requestAnimationFrame(pintar), { passive: true });
+    pista.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') { e.preventDefault(); ir(1); } if (e.key === 'ArrowLeft') { e.preventDefault(); ir(-1); } });
+    window.addEventListener('resize', pintar);
+    ctl.hidden = false; pintar();
+  });
+})();
