@@ -9,7 +9,6 @@ backend:
 
 site_url: https://geralzuluaga.com
 display_url: https://geralzuluaga.com
-locale: es
 media_folder: public/img/uploads
 public_folder: /img/uploads
 
@@ -29,7 +28,7 @@ collections:
             summary: "{{fields.titulo}}"
             hint: "Arrastra para cambiar el orden. Dentro de cada nicho agregas, quitas, reordenas u ocultas videos."
             fields:
-              - { label: Identificador (sin espacios ni tildes, ej. viajes), name: id, widget: string }
+              - { label: 'Identificador (sin espacios ni tildes, ej. viajes)', name: id, widget: string }
               - { label: Título del nicho, name: titulo, widget: string }
               - { label: Texto corto del botón, name: boton, widget: string, required: false }
               - { label: Descripción corta, name: descripcion, widget: string, required: false }
@@ -71,7 +70,7 @@ collections:
             summary: "{{fields.autor}}: {{fields.texto}}"
             fields:
               - { label: Texto del mensaje, name: texto, widget: text }
-              - { label: De quién (ej. Marca X, por WhatsApp), name: autor, widget: string, required: false }
+              - { label: 'De quién (ej. Marca X, por WhatsApp)', name: autor, widget: string, required: false }
               - { label: Captura del mensaje (opcional), name: captura, widget: image, required: false }
 
       - name: inicio
@@ -85,8 +84,8 @@ collections:
             name: hero
             widget: object
             fields:
-              - { label: Nombre, primera línea, name: titular_linea1, widget: string }
-              - { label: Nombre, segunda línea, name: titular_linea2, widget: string }
+              - { label: 'Nombre, primera línea', name: titular_linea1, widget: string }
+              - { label: 'Nombre, segunda línea', name: titular_linea2, widget: string }
               - { label: Qué eres (una línea), name: rol, widget: string }
               - { label: Promesa, name: promesa, widget: string }
               - { label: Texto del botón principal, name: boton_principal, widget: string }
@@ -212,7 +211,7 @@ collections:
               - { label: Para quién es, name: para_quien, widget: string, required: false }
               - { label: Descripción, name: descripcion, widget: text }
               - { label: Qué incluye (opcional), name: incluye, widget: list, required: false, field: { label: Ítem, name: item, widget: string } }
-              - { label: Precio (texto libre, ej. "$90.000 COP"), name: precio, widget: string, required: false }
+              - { label: 'Precio (texto libre, ej. "$90.000 COP")', name: precio, widget: string, required: false }
               - { label: Texto del botón, name: boton, widget: string }
               - { label: Enlace de pago o agenda (opcional), name: enlace, widget: string, required: false, hint: "Si lo dejas vacío, el botón abre un WhatsApp contigo." }
               - { label: Imagen o portada (opcional), name: imagen, widget: image, required: false }
@@ -253,7 +252,7 @@ collections:
       - { label: Título, name: titulo, widget: string }
       - { label: Fecha, name: fecha, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
       - { label: Resumen (aparece en Google y en la lista), name: resumen, widget: text, hint: "Una o dos frases, máximo ~155 caracteres." }
-      - { label: Imagen de portada (horizontal 16:9), name: imagen, widget: image, required: false }
+      - { label: 'Imagen de portada (horizontal 16:9)', name: imagen, widget: image, required: false }
       - { label: Publicar, name: publicado, widget: boolean, default: false, hint: "Apagado = borrador, no se ve en la página." }
       - { label: Contenido, name: body, widget: markdown }
 
