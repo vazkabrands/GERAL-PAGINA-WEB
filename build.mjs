@@ -39,6 +39,9 @@ const minus1 = (s) => s.charAt(0).toLowerCase() + s.slice(1);
 const wa = (msg) => `https://wa.me/${S.whatsapp}?text=${encodeURIComponent(msg)}`;
 const igUrl = `https://www.instagram.com/${S.instagram}`;
 const ttUrl = `https://www.tiktok.com/@${S.tiktok}`;
+const REDES_EXTRA = [['facebook', 'Facebook', 'fb'], ['youtube', 'YouTube', 'yt'], ['linkedin', 'LinkedIn', 'li'], ['pinterest', 'Pinterest', 'pt'], ['threads', 'Threads', 'th']]
+  .map(([k, n, i]) => ({ nombre: n, icono: i, url: urlSegura(S[k]) })).filter((r) => r.url);
+const TODAS_REDES = [{ nombre: 'Instagram', icono: 'ig', url: igUrl }, { nombre: 'TikTok', icono: 'tt', url: ttUrl }, ...REDES_EXTRA];
 const ic = (n) => `<svg class="ic" aria-hidden="true" focusable="false"><use href="#ico-${n}"/></svg>`;
 const json = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
 const PLAT = { instagram: 'Instagram', tiktok: 'TikTok', youtube: 'YouTube' };
@@ -79,7 +82,7 @@ function leerPosts() {
     .sort((a, b) => b.fecha - a.fecha);
 }
 const posts = leerPosts();
-const blogOn = posts.length > 0;
+const blogOn = B.activa !== false;
 
 /* ---------- Asesorías, diagnósticos y ebooks ---------- */
 const O = leer('ofertas');
@@ -99,6 +102,11 @@ const SIMBOLOS = `<svg width="0" height="0" style="position:absolute" aria-hidde
 <symbol id="ico-wa" viewBox="0 0 48 48"><path d="M24 5C13.500 5 5 13.400 5 23.800c0 3.600 1 7 2.900 9.900L5.500 43l9.600-2.500a19 19 0 0 0 8.900 2.200C34.500 42.700 43 34.300 43 23.900 43 13.400 34.500 5 24 5z" fill="none" stroke="currentColor" stroke-width="3.600" stroke-linejoin="round"/><path d="M17.500 15.500c-1 .9-1.700 2.200-1.300 4.200.5 2.700 2.700 5.800 5.500 8 2.400 1.900 5 3 7 2.800 1.500-.2 2.900-1.200 3.300-2.300.2-.6.200-1.100 0-1.300l-3.300-1.800c-.5-.2-1 0-1.300.4l-1 1.300c-.3.300-.6.300-1 .2-1.700-.7-4-2.900-5-4.800-.2-.4-.2-.8.100-1.100l1-1.200c.3-.4.300-.8.100-1.200l-1.500-3.200c-.3-.6-1.200-.7-1.600-.3z" fill="currentColor"/></symbol>
 <symbol id="ico-tt" viewBox="0 0 48 48"><path d="M27 6v25.500a6.500 6.500 0 1 1-6.500-6.500" fill="none" stroke="currentColor" stroke-width="4.500" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 6c.6 5 3.800 8.600 9 9.200" fill="none" stroke="currentColor" stroke-width="4.500" stroke-linecap="round"/></symbol>
 <symbol id="ico-mail" viewBox="0 0 48 48"><rect x="5" y="10" width="38" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="3.500"/><path d="M6 13l18 14L42 13" fill="none" stroke="currentColor" stroke-width="3.500" stroke-linejoin="round"/></symbol>
+<symbol id="ico-fb" viewBox="0 0 48 48"><path d="M27 43V26h6l1-7h-7v-4c0-2 .8-3.400 3.500-3.400H34V5.300C33.300 5.200 31.300 5 29 5c-5 0-8 3-8 8.300V19h-6v7h6v17z" fill="currentColor"/></symbol>
+<symbol id="ico-yt" viewBox="0 0 48 48"><rect x="4" y="10" width="40" height="28" rx="9" fill="none" stroke="currentColor" stroke-width="3.600"/><path d="M20 17v14l12-7z" fill="currentColor"/></symbol>
+<symbol id="ico-li" viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="6" fill="none" stroke="currentColor" stroke-width="3.600"/><path d="M15 21v13M15 14.500v.5M22 34V21m0 6c0-3.500 2-6 5.500-6S33 23 33 27v7" fill="none" stroke="currentColor" stroke-width="3.600" stroke-linecap="round"/></symbol>
+<symbol id="ico-pt" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="3.600"/><path d="M22 15c-5 1-7 6-5 10 1.500 2.500 5 2.500 6-.5l1.500-6M24 22l-3 15" fill="none" stroke="currentColor" stroke-width="3.200" stroke-linecap="round"/></symbol>
+<symbol id="ico-th" viewBox="0 0 48 48"><path d="M33 22c-1-6-5-9-10-9-6 0-10 4-10 11s4 11 10 11c5 0 8-3 8-6s-3-5-7-5-5 2-5 3.500 1.500 3 3.500 3c4 0 6-3 6-9z" fill="none" stroke="currentColor" stroke-width="3.400" stroke-linecap="round"/></symbol>
 <symbol id="ico-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.200 7-12a7 7 0 1 0-14 0c0 5.800 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.600" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
 <symbol id="ico-play" viewBox="0 0 24 24"><path d="M6 3.500v17l15-8.500z" fill="currentColor"/></symbol>
 <symbol id="onda" viewBox="0 0 1440 46" preserveAspectRatio="none"><path d="M0 0v26c60 12 120 14 190 6s140-22 220-20 150 24 240 24 170-20 250-22 160 14 240 14 150-14 210-10 120 10 170 4 90-10 120-6V46H0z"/></symbol>
@@ -149,6 +157,7 @@ ${blogOn ? `<link rel="alternate" type="application/rss+xml" title="Blog de ${es
 <body>
 ${SIMBOLOS}
 <a class="skip" href="#principal">Saltar al contenido</a>
+<div class="barra-redes"><div class="barra-in"><ul aria-label="Mis redes sociales">${TODAS_REDES.map((r) => `<li><a href="${esc(r.url)}" target="_blank" rel="me noopener" aria-label="${esc(r.nombre)} de ${esc(S.nombre)}">${ic(r.icono)}</a></li>`).join('')}</ul><span>${esc(S.ubicacion)}</span></div></div>
 <header class="top"><div class="top-in">
 <a class="logo-nombre" href="/">${esc(S.nombre)}<small>Creadora UGC · Community manager</small></a>
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
@@ -172,6 +181,7 @@ ${cuerpo}
 <li><a href="mailto:${esc(S.email)}">${ic('mail')}${esc(S.email)}</a></li>
 <li><a href="${igUrl}" target="_blank" rel="me noopener">${ic('ig')}@${esc(S.instagram)}</a></li>
 <li><a href="${ttUrl}" target="_blank" rel="me noopener">${ic('tt')}@${esc(S.tiktok)}</a></li>
+${REDES_EXTRA.map((r) => `<li><a href="${esc(r.url)}" target="_blank" rel="me noopener">${ic(r.icono)}${esc(r.nombre)}</a></li>`).join('')}
 </ul>
 </div>
 <p class="lema">${esc(S.lema)}</p>
@@ -203,7 +213,7 @@ const persona = () => ({
   telephone: `+${S.whatsapp}`,
   address: { '@type': 'PostalAddress', addressLocality: S.ciudad, addressRegion: S.region, addressCountry: 'CO' },
   knowsAbout: [...nichos.map((n) => n.titulo), 'Contenido UGC', 'Community management', 'Redes sociales', 'Marketing digital'],
-  sameAs: [igUrl, ttUrl],
+  sameAs: TODAS_REDES.map((r) => r.url),
 });
 
 function preguntas() {
@@ -233,7 +243,7 @@ function paginaBlog() {
 <p class="lead">${esc(B.intro)}</p>
 </div></section>
 <section class="seccion" style="padding-top:24px" aria-label="Artículos"><div class="wrap">
-<ul class="posts">${posts.map(tarjetaPost).join('')}</ul>
+${posts.length ? `<ul class="posts">${posts.map(tarjetaPost).join('')}</ul>` : `<p class="lead">${esc(B.vacio || 'Muy pronto publicaré aquí mis primeros artículos.')}</p>`}
 </div></section>`;
   const ld = {
     '@context': 'https://schema.org',
@@ -357,7 +367,7 @@ ${seccionNichos(false)}
 ${seccionMarcas()}
 ${seccionTestimonios()}
 
-${blogOn ? `<section class="seccion" aria-labelledby="t-blog-home"><div class="wrap">
+${blogOn && posts.length ? `<section class="seccion" aria-labelledby="t-blog-home"><div class="wrap">
 <div class="sec-cab"><h2 class="titulo-sec" id="t-blog-home">${esc(B.home_titulo)}</h2></div>
 <ul class="posts">${posts.slice(0, 3).map(tarjetaPost).join('')}</ul>
 <p style="margin-top:28px"><a class="btn btn-linea" href="/blog/">Ver todos los artículos</a></p>
@@ -533,7 +543,7 @@ function llmsTxt() {
   if (comunidadOn) L.push('', '## Comunidad de mujeres', '', ...(C.grupos || []).map((g) => `- ${g.nombre}: ${g.descripcion}`), `- ${C.canal_titulo}: ${C.canal_descripcion}`);
   if (ofertasOn) L.push('', '## Asesorías, diagnósticos y recursos', '', ...ofertas.map((o) => `- ${o.nombre}: ${o.descripcion}`));
   if (blogOn) L.push('', '## Artículos del blog', '', ...posts.map((p) => `- [${p.titulo}](${SITE}/blog/${p.slug}/): ${p.resumen}`));
-  L.push('', '## Contacto', '', `- WhatsApp: ${S.whatsapp_visible}`, `- Correo: ${S.email}`, `- Instagram: ${igUrl}`, `- TikTok: ${ttUrl}`, `- Ubicación: ${S.ubicacion}`, '');
+  L.push('', '## Contacto', '', `- WhatsApp: ${S.whatsapp_visible}`, `- Correo: ${S.email}`, ...TODAS_REDES.map((r) => `- ${r.nombre}: ${r.url}`), `- Ubicación: ${S.ubicacion}`, '');
   return L.join('\n');
 }
 
@@ -583,7 +593,7 @@ if (serviciosOn) { out('servicios/index.html', paginaServicios()); rutas.push(['
 if (ofertasOn) { out('asesorias/index.html', paginaOfertas()); rutas.push(['/asesorias/']); }
 if (comunidadOn) { out('comunidad/index.html', paginaComunidad()); rutas.push(['/comunidad/']); }
 if (blogOn) {
-  out('blog/index.html', paginaBlog()); rutas.push(['/blog/', iso(posts[0].fecha)]);
+  out('blog/index.html', paginaBlog()); rutas.push(posts.length ? ['/blog/', iso(posts[0].fecha)] : ['/blog/']);
   for (const p of posts) { out(`blog/${p.slug}/index.html`, paginaPost(p)); rutas.push([`/blog/${p.slug}/`, iso(p.fecha)]); }
   out('feed.xml', feedRss());
 }

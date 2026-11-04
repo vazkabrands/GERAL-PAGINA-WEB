@@ -7,5 +7,7 @@
   "cta_titulo": "¿Tienes una marca y quieres contenido real?",
   "cta_texto": "Cuéntame qué quieres lograr y te escribo por WhatsApp.",
   "cta_boton": "Hablemos",
-  "mensaje_whatsapp": "Hola Geral, leí tu blog y me gustaría hablar sobre contenido para mi marca."
+  "mensaje_whatsapp": "Hola Geral, leí tu blog y me gustaría hablar sobre contenido para mi marca.",
+  "activa": true,
+  "vacio": "Muy pronto publicaré aquí mis primeros artículos sobre UGC, marketing y redes."
 }

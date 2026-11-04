@@ -214,6 +214,8 @@ collections:
         file: src/data/blog.json
         format: json
         fields:
+          - { label: Mostrar el blog en el menú, name: activa, widget: boolean, default: true }
+          - { label: Mensaje mientras no hay artículos, name: vacio, widget: string, required: false }
           - { label: Título para Google, name: seo_titulo, widget: string }
           - { label: Descripción para Google, name: seo_descripcion, widget: text }
           - { label: Titular, name: titular, widget: string }
@@ -261,6 +263,11 @@ collections:
           - { label: WhatsApp como se muestra, name: whatsapp_visible, widget: string }
           - { label: Usuario de Instagram (sin @), name: instagram, widget: string }
           - { label: Usuario de TikTok (sin @), name: tiktok, widget: string }
+          - { label: "Facebook (enlace completo, https://...)", name: facebook, widget: string, required: false }
+          - { label: "YouTube (enlace completo)", name: youtube, widget: string, required: false }
+          - { label: "LinkedIn (enlace completo)", name: linkedin, widget: string, required: false }
+          - { label: "Pinterest (enlace completo)", name: pinterest, widget: string, required: false }
+          - { label: "Threads (enlace completo)", name: threads, widget: string, required: false }
           - { label: Imagen para compartir el enlace (1200x630), name: foto_og, widget: image, required: false }
           - { label: Texto del botón del menú, name: boton_header, widget: string }
           - { label: Mensaje que se envía por WhatsApp, name: mensaje_whatsapp, widget: string }

@@ -392,3 +392,13 @@ body{font-size:1.05rem;line-height:1.65}
 
 /* Cifras de comunidad en serif */
 .cifras strong{font-weight:400}
+
+/* Barra superior de redes (esquina superior izquierda) */
+.barra-redes{background:var(--cafe-osc);color:var(--arena)}
+.barra-in{width:min(var(--ancho),100% - 40px);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;min-height:36px;font-size:.82rem}
+.barra-in ul{display:flex;gap:6px;list-style:none;padding:0}
+.barra-in a{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;color:var(--arena);transition:color .15s,background-color .15s}
+.barra-in a:hover{color:var(--cafe-osc);background:var(--dorado)}
+.barra-in .ic{width:17px;height:17px}
+.barra-redes :focus-visible{outline-color:var(--dorado)}
+@media (max-width:560px){.barra-in span{display:none}}
