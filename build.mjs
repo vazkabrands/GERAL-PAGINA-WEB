@@ -106,7 +106,7 @@ const SIMBOLOS = `<svg width="0" height="0" style="position:absolute" aria-hidde
 
 const onda = (cls) => `<svg class="onda ${cls}" viewBox="0 0 1440 46" preserveAspectRatio="none" aria-hidden="true"><use href="#onda"/></svg>`;
 const estrellas = (cls = '') => `<svg class="estrellas ${cls}" viewBox="0 0 120 90" aria-hidden="true"><use href="#estrellas"/></svg>`;
-const vacio = `<svg class="vacio" viewBox="0 0 120 90" aria-hidden="true"><use href="#estrellas"/></svg>`;
+const vacio = `<span class="vacio" aria-hidden="true">GZ</span>`;
 const redes = () => `<ul class="redes">
 <li><a href="${igUrl}" target="_blank" rel="me noopener" aria-label="Instagram de ${esc(S.nombre)}">${ic('ig')}</a></li>
 <li><a href="${ttUrl}" target="_blank" rel="me noopener" aria-label="TikTok de ${esc(S.nombre)}">${ic('tt')}</a></li>
@@ -116,11 +116,12 @@ function layout({ ruta, titulo, desc, cuerpo, ld, og, actual, visor = false }) {
   const canon = `${SITE}${ruta}`;
   const imgOg = og && existeArchivo(og) ? (og.startsWith('http') ? og : SITE + og) : '';
   const nav = [
-    ['Sobre mí', '/#sobre-mi'], ['Contenido', '/#contenido'], ['Marcas', '/#marcas'],
+    ['Inicio', '/'], ['Sobre mí', '/sobre-mi/'], ['Portafolio', '/portafolio/'],
     ...(serviciosOn ? [['Servicios', '/servicios/']] : []),
     ...(ofertasOn ? [['Asesorías', '/asesorias/']] : []),
     ...(comunidadOn ? [['Comunidad', '/comunidad/']] : []),
     ...(blogOn ? [['Blog', '/blog/']] : []),
+    ['Contacto', '/#contacto'],
   ];
   return `<!doctype html>
 <html lang="es-CO">
@@ -140,7 +141,7 @@ ${GV ? `<meta name="google-site-verification" content="${GV}">\n` : ''}${BV ? `<
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${canon}">
 ${imgOg ? `<meta property="og:image" content="${imgOg}">\n<meta name="twitter:card" content="summary_large_image">` : '<meta name="twitter:card" content="summary">'}
-<link rel="preload" href="/fonts/caveat-brush-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 ${blogOn ? `<link rel="alternate" type="application/rss+xml" title="Blog de ${esc(S.nombre)}" href="/feed.xml">\n` : ''}<link rel="stylesheet" href="/styles.css">
 <script type="application/ld+json">${json(ld)}</script>
@@ -149,7 +150,7 @@ ${blogOn ? `<link rel="alternate" type="application/rss+xml" title="Blog de ${es
 ${SIMBOLOS}
 <a class="skip" href="#principal">Saltar al contenido</a>
 <header class="top"><div class="top-in">
-<a class="logo-nombre" href="/">${esc(S.nombre)}</a>
+<a class="logo-nombre" href="/">${esc(S.nombre)}<small>Creadora UGC · Community manager</small></a>
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
 <nav class="nav" id="menu" aria-label="Principal">
 <ul>${nav.map(([t, u]) => `<li><a href="${u}"${u === actual ? ' aria-current="page"' : ''}>${esc(t)}</a></li>`).join('')}</ul>
@@ -291,10 +292,37 @@ function tarjetaVideo(v) {
   return `<li class="video"><figure>${envuelto}<figcaption><strong>${esc(v.titulo)}</strong>${v.marca ? `<small>${esc(v.marca)}</small>` : ''}</figcaption></figure></li>`;
 }
 
+const seccionNichos = (todos = true) => nichos.map((n) => `<article class="nicho" id="${esc(n.id)}" aria-labelledby="t-${esc(n.id)}">
+<header class="nicho-cab"><h3 id="t-${esc(n.id)}">${esc(n.titulo)}</h3>${n.descripcion ? `<p>${esc(n.descripcion)}</p>` : ''}</header>
+<ul class="videos">${n.videos.slice(0, todos ? 99 : 4).map(tarjetaVideo).join('')}</ul>
+</article>`).join('\n');
+
+const seccionMarcas = () => marcas.length ? `<section class="marcas" id="marcas" aria-labelledby="t-marcas"><div class="wrap">
+<h2 class="titulo-sec" id="t-marcas">${esc(P.marcas_titulo)}</h2>
+<ul class="logos">${marcas.map((m) => `<li><div class="logo">${existeArchivo(m.logo) ? `<img src="${esc(m.logo)}" alt="Logo de ${esc(m.nombre)}" loading="lazy">` : `<b aria-hidden="true">${esc(m.nombre.charAt(0))}</b>`}</div><span>${esc(m.nombre)}</span></li>`).join('')}</ul>
+</div></section>` : '';
+
+const seccionTestimonios = () => (P.testimonios || []).length ? `<section class="testimonios" id="testimonios" aria-labelledby="t-testi"><div class="wrap">
+<h2 class="titulo-sec" id="t-testi">${esc(P.testimonios_titulo)}</h2>
+<ul class="citas">${P.testimonios.map((t) => `<li class="cita"><blockquote><p>${esc(t.texto)}</p></blockquote>${t.autor ? `<cite>${esc(t.autor)}</cite>` : ''}${existeArchivo(t.captura) ? `<img src="${esc(t.captura)}" alt="Captura del mensaje de ${esc(t.autor || 'una marca')}" loading="lazy">` : ''}</li>`).join('')}</ul>
+</div></section>` : '';
+
+const bloqueSobre = (completo) => {
+  const sm = P.sobre_mi;
+  const foto = existeArchivo(sm.foto) ? `<img src="${esc(sm.foto)}" alt="${esc(S.nombre)} sonriendo" width="760" height="950" loading="lazy">` : vacio;
+  return `<div class="wrap sobre">
+<div class="sobre-foto">${foto}</div>
+<div class="sobre-txt">
+<h2 class="titulo-sec" id="t-sobre">${esc(completo ? sm.titulo : (sm.titulo_corto || sm.titulo))}</h2>
+${completo ? (sm.parrafos || []).map((p) => `<p>${esc(p)}</p>`).join('') : `<p>${esc(P.sobre_mi_resumen || (sm.parrafos || [])[0] || '')}</p>`}
+${completo ? `<ul class="rasgos">${(sm.rasgos || []).map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : '<p><a class="enlace-flecha" href="/sobre-mi/">Conóceme mejor</a></p>'}
+</div></div>`;
+};
+
 function paginaInicio() {
-  const h = P.hero, sm = P.sobre_mi;
+  const h = P.hero;
   const fotoHero = existeArchivo(h.foto) ? `<img src="${esc(h.foto)}" alt="${esc(S.nombre)}, creadora de contenido UGC en ${esc(S.ciudad)}" width="840" height="1050" fetchpriority="high">` : vacio;
-  const fotoSobre = existeArchivo(sm.foto) ? `<img src="${esc(sm.foto)}" alt="${esc(S.nombre)} sonriendo" width="760" height="950" loading="lazy">` : vacio;
+  const cifras = (P.cifras || []).filter((c) => c.numero);
   const cuerpo = `
 <section class="hero" aria-label="Presentación">
 <div class="hero-txt">
@@ -304,56 +332,45 @@ function paginaInicio() {
 <p class="hero-promesa">${esc(h.promesa)}</p>
 <div class="hero-cta">
 <a class="btn btn-cafe" href="${wa(S.mensaje_whatsapp)}" target="_blank" rel="noopener">${ic('wa')} ${esc(h.boton_principal)}</a>
-<a class="btn btn-linea" href="#contenido">${esc(h.boton_secundario)}</a>
+<a class="btn btn-linea" href="/portafolio/">${esc(h.boton_secundario)}</a>
 </div>
-${nichos.length ? `<ul class="chips" aria-label="Nichos de contenido">${nichos.map((n) => `<li><a class="chip" href="#${esc(n.id)}">${esc(n.boton || n.titulo)}</a></li>`).join('')}</ul>` : ''}
-${redes()}
 </div>
-<div class="hero-foto"><div class="arco">${fotoHero}</div>${estrellas()}</div>
+<div class="hero-foto"><div class="marco">${fotoHero}</div></div>
 </section>
 
-<section class="seccion" id="sobre-mi" aria-labelledby="t-sobre"><div class="wrap sobre">
-<div class="sobre-foto">${fotoSobre}</div>
-<div class="sobre-txt">
-<h2 class="titulo-sec" id="t-sobre">${esc(sm.titulo)}</h2>
-${(sm.parrafos || []).map((p) => `<p>${esc(p)}</p>`).join('')}
-<ul class="rasgos">${(sm.rasgos || []).map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
-</div>
-</div></section>
+${cifras.length ? `<section class="cifras-banda" aria-label="Cifras"><ul class="wrap cifras-lista">${cifras.map((c) => `<li><strong>${esc(c.numero)}</strong><span>${esc(c.texto)}</span></li>`).join('')}</ul></section>` : ''}
 
-<section class="seccion" id="contenido" aria-labelledby="t-contenido" style="padding-top:24px"><div class="wrap">
-<div class="sec-cab"><h2 class="titulo-sec" id="t-contenido">${esc(P.contenido_titulo)}</h2><p>${esc(P.contenido_intro)}</p></div>
-${nichos.map((n) => `<article class="nicho" id="${esc(n.id)}" aria-labelledby="t-${esc(n.id)}">
-<header class="nicho-cab"><h3 id="t-${esc(n.id)}">${esc(n.titulo)}</h3>${n.descripcion ? `<p>${esc(n.descripcion)}</p>` : ''}</header>
-<ul class="videos">${n.videos.map(tarjetaVideo).join('')}</ul>
-</article>`).join('\n')}
-</div></section>
+<section class="seccion" id="sobre-mi" aria-labelledby="t-sobre">${bloqueSobre(false)}</section>
 
-${marcas.length ? `<section class="marcas" id="marcas" aria-labelledby="t-marcas">${onda('onda-arriba')}<div class="wrap">
-<h2 class="titulo-sec" id="t-marcas">${esc(P.marcas_titulo)}</h2>
-<ul class="logos">${marcas.map((m) => `<li><div class="logo">${existeArchivo(m.logo) ? `<img src="${esc(m.logo)}" alt="Logo de ${esc(m.nombre)}" loading="lazy">` : `<b aria-hidden="true">${esc(m.nombre.charAt(0))}</b>`}</div><span>${esc(m.nombre)}</span></li>`).join('')}</ul>
-</div>${onda('onda-abajo onda-suave')}</section>` : ''}
-
-${(P.testimonios || []).length ? `<section class="testimonios" id="testimonios" aria-labelledby="t-testi"><div class="wrap">
-<h2 class="titulo-sec" id="t-testi">${esc(P.testimonios_titulo)}</h2>
-<ul class="citas">${P.testimonios.map((t) => `<li class="cita"><blockquote><p>${esc(t.texto)}</p></blockquote>${t.autor ? `<cite>${esc(t.autor)}</cite>` : ''}${existeArchivo(t.captura) ? `<img src="${esc(t.captura)}" alt="Captura del mensaje de ${esc(t.autor || 'una marca')}" loading="lazy">` : ''}</li>`).join('')}</ul>
+${serviciosOn ? `<section class="seccion seccion-arena" aria-labelledby="t-serv-home"><div class="wrap">
+<div class="sec-cab"><h2 class="titulo-sec" id="t-serv-home">${esc(P.servicios_home_titulo || 'Servicios')}</h2></div>
+<ul class="tarjetas">${SV.servicios.map((s) => `<li><h3>${esc(s.titulo)}</h3><p>${esc(s.descripcion)}</p></li>`).join('')}</ul>
+<p style="margin-top:30px"><a class="btn btn-cafe" href="/servicios/">Ver servicios</a></p>
 </div></section>` : ''}
 
-${blogOn ? `<section class="seccion" aria-labelledby="t-blog-home" style="padding-top:24px"><div class="wrap">
+<section class="seccion" id="contenido" aria-labelledby="t-contenido"><div class="wrap">
+<div class="sec-cab"><h2 class="titulo-sec" id="t-contenido">${esc(P.portafolio_home_titulo || 'Portafolio')}</h2><p>${esc(P.portafolio_home_intro || '')}</p></div>
+${seccionNichos(false)}
+<p style="margin-top:36px"><a class="btn btn-linea" href="/portafolio/">Ver el portafolio completo</a></p>
+</div></section>
+
+${seccionMarcas()}
+${seccionTestimonios()}
+
+${blogOn ? `<section class="seccion" aria-labelledby="t-blog-home"><div class="wrap">
 <div class="sec-cab"><h2 class="titulo-sec" id="t-blog-home">${esc(B.home_titulo)}</h2></div>
 <ul class="posts">${posts.slice(0, 3).map(tarjetaPost).join('')}</ul>
 <p style="margin-top:28px"><a class="btn btn-linea" href="/blog/">Ver todos los artículos</a></p>
 </div></section>` : ''}
 
-${serviciosOn || comunidadOn || ofertasOn ? `<section class="seccion" aria-labelledby="t-mas"><div class="wrap">
+${ofertasOn || comunidadOn ? `<section class="seccion seccion-arena" aria-labelledby="t-mas"><div class="wrap">
 <div class="sec-cab"><h2 class="titulo-sec" id="t-mas">Más formas de trabajar conmigo</h2></div>
 <div class="puertas">
-${serviciosOn ? `<article class="puerta puerta-cafe"><h3>${esc(SV.titular)}</h3><p>${esc(SV.cta_texto)}</p><a class="btn btn-oro" href="/servicios/">Ver servicios</a></article>` : ''}
-${ofertasOn ? `<article class="puerta puerta-suave"><h3>${esc(O.titular)}</h3><p>${esc(O.intro)}</p><a class="btn btn-cafe" href="/asesorias/">Ver asesorías</a></article>` : ''}
+${ofertasOn ? `<article class="puerta puerta-cafe"><h3>${esc(O.titular)}</h3><p>${esc(O.intro)}</p><a class="btn btn-oro" href="/asesorias/">Ver asesorías</a></article>` : ''}
 ${comunidadOn ? `<article class="puerta puerta-oro"><h3>${esc(C.titular)}</h3><p>${esc(C.intro)}</p><a class="btn btn-cafe" href="/comunidad/">Conocer la comunidad</a></article>` : ''}
 </div></div></section>` : ''}
 
-<section class="seccion" id="preguntas" aria-labelledby="t-faq" style="padding-top:24px"><div class="wrap faq">
+<section class="seccion" id="preguntas" aria-labelledby="t-faq"><div class="wrap faq">
 <h2 class="titulo-sec" id="t-faq" style="margin-bottom:20px">Preguntas frecuentes</h2>
 ${preguntas().map(([a, b]) => `<details><summary>${esc(a)}</summary><p>${esc(b)}</p></details>`).join('\n')}
 </div></section>`;
@@ -369,7 +386,38 @@ ${preguntas().map(([a, b]) => `<details><summary>${esc(a)}</summary><p>${esc(b)}
   return layout({ ruta: '/', titulo: P.seo_titulo, desc: P.seo_descripcion, cuerpo, ld, og: S.foto_og || P.hero.foto, actual: '/', visor: true });
 }
 
-/* ---------- Servicios ---------- */
+function paginaPortafolio() {
+  const titulo = `Portafolio UGC en Medellín | ${S.nombre}`;
+  const desc = 'Portafolio de contenido UGC: videos para marcas de cuidado capilar, viajes, gastronomía y belleza, con las marcas con las que he trabajado.';
+  const cuerpo = `
+<section class="pag-hero"><div class="wrap"><h1>Portafolio</h1><p class="lead">${esc(P.contenido_intro)}</p>
+<ul class="chips" aria-label="Nichos de contenido">${nichos.map((n) => `<li><a class="chip" href="#${esc(n.id)}">${esc(n.boton || n.titulo)}</a></li>`).join('')}</ul></div></section>
+<section class="seccion" style="padding-top:12px"><div class="wrap">${seccionNichos(true)}</div></section>
+${seccionMarcas()}
+${seccionTestimonios()}`;
+  const ld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'CollectionPage', url: `${SITE}/portafolio/`, name: titulo, description: desc, inLanguage: 'es-CO', dateModified: hoy, about: { '@id': `${SITE}/#persona` } },
+    persona(),
+    { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE}/` }, { '@type': 'ListItem', position: 2, name: 'Portafolio', item: `${SITE}/portafolio/` }] },
+  ] };
+  return layout({ ruta: '/portafolio/', titulo, desc, cuerpo, ld, og: S.foto_og || P.hero.foto, actual: '/portafolio/', visor: true });
+}
+
+function paginaSobreMi() {
+  const titulo = `Sobre mí | ${S.nombre}, creadora UGC y community manager en ${S.ciudad}`;
+  const desc = `Conoce a ${S.nombre}: creadora de contenido UGC, community manager y lifestyle en ${S.ciudad}, Colombia.`;
+  const cuerpo = `
+<section class="pag-hero"><div class="wrap"><h1>${esc(S.nombre)}</h1><p class="lead">${esc(P.hero.rol)}</p></div></section>
+<section class="seccion" style="padding-top:20px" aria-labelledby="t-sobre">${bloqueSobre(true)}</section>
+<section class="banda"><div class="wrap"><h2 class="titulo-sec">¿Trabajamos juntas?</h2><p>${esc(S.contacto_texto)}</p><a class="btn btn-cafe" href="${wa(S.mensaje_whatsapp)}" target="_blank" rel="noopener">${ic('wa')} Escríbeme por WhatsApp</a></div></section>`;
+  const ld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'AboutPage', url: `${SITE}/sobre-mi/`, name: titulo, description: desc, inLanguage: 'es-CO', dateModified: hoy, mainEntity: { '@id': `${SITE}/#persona` } },
+    persona(),
+    { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE}/` }, { '@type': 'ListItem', position: 2, name: 'Sobre mí', item: `${SITE}/sobre-mi/` }] },
+  ] };
+  return layout({ ruta: '/sobre-mi/', titulo, desc, cuerpo, ld, og: S.foto_og || P.hero.foto, actual: '/sobre-mi/' });
+}
+
 function paginaServicios() {
   const cuerpo = `
 <section class="pag-hero"><div class="wrap">
@@ -527,8 +575,10 @@ mkdirSync('dist', { recursive: true });
 if (existsSync('public')) cpSync('public', 'dist', { recursive: true });
 const out = (ruta, txt) => { const f = join('dist', ruta); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, txt); };
 
-const rutas = [['/']];
+const rutas = [['/'], ['/sobre-mi/'], ['/portafolio/']];
 out('index.html', paginaInicio());
+out('sobre-mi/index.html', paginaSobreMi());
+out('portafolio/index.html', paginaPortafolio());
 if (serviciosOn) { out('servicios/index.html', paginaServicios()); rutas.push(['/servicios/']); }
 if (ofertasOn) { out('asesorias/index.html', paginaOfertas()); rutas.push(['/asesorias/']); }
 if (comunidadOn) { out('comunidad/index.html', paginaComunidad()); rutas.push(['/comunidad/']); }

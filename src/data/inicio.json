@@ -4,15 +4,15 @@
   "hero": {
     "titular_linea1": "Geraldinne",
     "titular_linea2": "Zuluaga",
-    "rol": "Creadora de contenido UGC, community manager y lifestyle en Medellín",
+    "rol": "Creadora de contenido UGC y community manager en Medellín",
     "promesa": "Contenido auténtico y estratégico para marcas de todos los nichos que quieren conectar.",
     "boton_principal": "Escríbeme por WhatsApp",
-    "boton_secundario": "Ver mi contenido",
+    "boton_secundario": "Ver portafolio",
     "foto": "/img/portada.jpg"
   },
   "sobre_mi": {
     "titulo": "Sobre mí",
-    "foto": "/img/sobre-mi.png",
+    "foto": "/img/sobre-mi.jpg",
     "parrafos": [
       "Soy Geraldinne, creadora de contenido UGC, community manager y lifestyle en Medellín, Colombia. Mezclo mi lado creativo con mi formación como administradora y marketera para hacer contenido que se vea real, se sienta cercano y le sirva a tu marca.",
       "Me encantan el beauty y el cuidado personal, los viajes, la gastronomía y probar planes nuevos. Eso se nota en lo que grabo: productos y experiencias que de verdad uso y disfruto."
@@ -28,5 +28,23 @@
   },
   "contenido_titulo": "Mi contenido",
   "contenido_intro": "Trabajo con marcas de todos los nichos. Estos son algunos de mis trabajos.",
-  "faq_extra": []
+  "faq_extra": [],
+  "cifras": [
+    {
+      "numero": "+1.200",
+      "texto": "personas siguen mis campañas UGC"
+    },
+    {
+      "numero": "+600",
+      "texto": "mujeres en mi comunidad de WhatsApp"
+    },
+    {
+      "numero": "4",
+      "texto": "nichos: capilar, viajes, gastronomía y belleza"
+    }
+  ],
+  "servicios_home_titulo": "Qué puedo hacer por tu marca",
+  "portafolio_home_titulo": "Portafolio",
+  "portafolio_home_intro": "Una muestra de mi contenido. En la página de portafolio está todo, por nicho.",
+  "sobre_mi_resumen": "Mezclo mi lado creativo con mi formación como administradora y marketera para hacer contenido que se vea real y le sirva a tu marca."
 }
